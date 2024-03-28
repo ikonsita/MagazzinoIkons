@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZMAGAZZINO_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="Ordine" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdOrdine"/>
+                </Key>
+                <Property Name="IdOrdine" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="idordine"/>
+                <Property Name="NumeroOrdine" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="numordine"/>
+                <Property Name="Categoria" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="categoria"/>
+                <Property Name="DataOrdine" Type="Edm.DateTime" Precision="7" sap:unicode="false" sap:label="dataordine"/>
+                <Property Name="IndirizzoPartenza" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="indpart"/>
+                <Property Name="IndirizzoConsegna" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="indcons"/>
+                <Property Name="Stato" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="stato"/>
+                <Property Name="DettaglioOrdine" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="detordine"/>
+                <Property Name="PrezzoTotale" Type="Edm.Decimal" Precision="10" Scale="2" sap:unicode="false" sap:label="prezzotot"/>
+                <Property Name="IdFornitore" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="idfornit"/>
+                <Property Name="IdCliente" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="idcliente"/>
+                <NavigationProperty Name="MerciSet01" Relationship="ZMAGAZZINO_SRV.OrdineMerci" FromRole="FromRole_OrdineMerci" ToRole="ToRole_OrdineMerci"/>
+            </EntityType>
+            <EntityType Name="Cliente" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdCliente"/>
+                </Key>
+                <Property Name="IdCliente" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="idcliente"/>
+                <Property Name="Nome" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="nomecli"/>
+                <Property Name="Cognome" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="cognomecli"/>
+                <Property Name="Mail" Type="Edm.String" MaxLength="65" sap:unicode="false" sap:label="mailcli"/>
+                <Property Name="Telefono" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="telefono"/>
+                <Property Name="PartitaIva" Type="Edm.String" MaxLength="11" sap:unicode="false" sap:label="piva"/>
+                <Property Name="Stato" Type="Edm.String" MaxLength="15" sap:unicode="false" sap:label="stato"/>
+                <Property Name="Note" Type="Edm.String" MaxLength="255" sap:unicode="false" sap:label="note"/>
+                <NavigationProperty Name="OrdineSet" Relationship="ZMAGAZZINO_SRV.ClienteOrdine" FromRole="FromRole_ClienteOrdine" ToRole="ToRole_ClienteOrdine"/>
+            </EntityType>
+            <EntityType Name="Magazzino" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdMagazzino"/>
+                </Key>
+                <Property Name="IdMagazzino" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="idmagaz"/>
+                <Property Name="Indirizzo" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="indirizzo"/>
+                <Property Name="Citta" Type="Edm.String" MaxLength="20" sap:unicode="false" sap:label="citta"/>
+                <Property Name="Provincia" Type="Edm.String" MaxLength="2" sap:unicode="false" sap:label="provincia"/>
+                <Property Name="Cap" Type="Edm.String" MaxLength="6" sap:unicode="false" sap:label="cap"/>
+                <Property Name="Orari" Type="Edm.String" MaxLength="8" sap:unicode="false" sap:label="ORARIO MAGAZZINO"/>
+                <Property Name="Scaffale" Type="Edm.String" MaxLength="10" sap:unicode="false" sap:label="scaffale"/>
+                <Property Name="Reparto" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="reparto"/>
+                <Property Name="Area" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="area"/>
+                <NavigationProperty Name="MerciSet01" Relationship="ZMAGAZZINO_SRV.MagazzinoMerce" FromRole="FromRole_MagazzinoMerce" ToRole="ToRole_MagazzinoMerce"/>
+            </EntityType>
+            <EntityType Name="Fornitore" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdFornitore"/>
+                </Key>
+                <Property Name="IdFornitore" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="idfornit"/>
+                <Property Name="NomeAzienda" Type="Edm.String" MaxLength="100" sap:unicode="false" sap:label="nomazienda"/>
+                <Property Name="PartitaIva" Type="Edm.String" MaxLength="11" sap:unicode="false" sap:label="partiva"/>
+                <Property Name="CodiceFiscale" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="codfiscale"/>
+                <Property Name="Indirizzo" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="indirizzo"/>
+                <Property Name="Telefono" Type="Edm.String" MaxLength="16" sap:unicode="false" sap:label="telforn"/>
+                <Property Name="Mail" Type="Edm.String" MaxLength="65" sap:unicode="false" sap:label="mail"/>
+                <Property Name="Stato" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="stato"/>
+                <Property Name="Pagamento" Type="Edm.String" MaxLength="50" sap:unicode="false" sap:label="pagamento"/>
+                <NavigationProperty Name="OrdineSet" Relationship="ZMAGAZZINO_SRV.FornitoreOrdine" FromRole="FromRole_FornitoreOrdine" ToRole="ToRole_FornitoreOrdine"/>
+            </EntityType>
+            <EntityType Name="Merci" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="IdMerci"/>
+                </Key>
+                <Property Name="IdMerci" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="ID MERCE"/>
+                <Property Name="DescMag" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="DESCRIZIONE MERCI"/>
+                <Property Name="CategMercMag" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="categoria"/>
+                <Property Name="QuantdispMercMag" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="quantità disponibile"/>
+                <Property Name="PrezzoldMercMag" Type="Edm.Decimal" Precision="10" Scale="2" sap:unicode="false" sap:label="PREZZO LORDO"/>
+                <Property Name="IvaMercMag" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="IVA"/>
+                <Property Name="ValMercMag" Type="Edm.String" MaxLength="3" sap:unicode="false" sap:label="VALUTA"/>
+                <Property Name="PesoMercMag" Type="Edm.Decimal" Precision="15" Scale="2" sap:unicode="false" sap:label="PESO MERCE"/>
+                <Property Name="DimMercMag" Type="Edm.Decimal" Precision="15" Scale="2" sap:unicode="false" sap:label="DIMENSIONE"/>
+                <Property Name="DispMercMag" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="DISPONIBILITA MERCE"/>
+                <Property Name="NoteMercMag" Type="Edm.String" MaxLength="30" sap:unicode="false" sap:label="NOTE"/>
+                <Property Name="IdMagazzino" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="idmagaz"/>
+                <Property Name="IdOrdine" Type="Edm.String" MaxLength="5" sap:unicode="false" sap:label="idordine"/>
+            </EntityType>
+            <Association Name="MagazzinoMerce" sap:content-version="1">
+                <End Type="ZMAGAZZINO_SRV.Magazzino" Multiplicity="1" Role="FromRole_MagazzinoMerce"/>
+                <End Type="ZMAGAZZINO_SRV.Merci" Multiplicity="*" Role="ToRole_MagazzinoMerce"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_MagazzinoMerce">
+                        <PropertyRef Name="IdMagazzino"/>
+                    </Principal>
+                    <Dependent Role="ToRole_MagazzinoMerce">
+                        <PropertyRef Name="IdMagazzino"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="OrdineMerci" sap:content-version="1">
+                <End Type="ZMAGAZZINO_SRV.Ordine" Multiplicity="1" Role="FromRole_OrdineMerci"/>
+                <End Type="ZMAGAZZINO_SRV.Merci" Multiplicity="*" Role="ToRole_OrdineMerci"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_OrdineMerci">
+                        <PropertyRef Name="IdOrdine"/>
+                    </Principal>
+                    <Dependent Role="ToRole_OrdineMerci">
+                        <PropertyRef Name="IdOrdine"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="FornitoreOrdine" sap:content-version="1">
+                <End Type="ZMAGAZZINO_SRV.Fornitore" Multiplicity="1" Role="FromRole_FornitoreOrdine"/>
+                <End Type="ZMAGAZZINO_SRV.Ordine" Multiplicity="*" Role="ToRole_FornitoreOrdine"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_FornitoreOrdine">
+                        <PropertyRef Name="IdFornitore"/>
+                    </Principal>
+                    <Dependent Role="ToRole_FornitoreOrdine">
+                        <PropertyRef Name="IdFornitore"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="ClienteOrdine" sap:content-version="1">
+                <End Type="ZMAGAZZINO_SRV.Cliente" Multiplicity="1" Role="FromRole_ClienteOrdine"/>
+                <End Type="ZMAGAZZINO_SRV.Ordine" Multiplicity="*" Role="ToRole_ClienteOrdine"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ClienteOrdine">
+                        <PropertyRef Name="IdCliente"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ClienteOrdine">
+                        <PropertyRef Name="IdCliente"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZMAGAZZINO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="OrdineSet" EntityType="ZMAGAZZINO_SRV.Ordine" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ClienteSet" EntityType="ZMAGAZZINO_SRV.Cliente" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MagazzinoSet" EntityType="ZMAGAZZINO_SRV.Magazzino" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="FornitoreSet" EntityType="ZMAGAZZINO_SRV.Fornitore" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="MerciSet" EntityType="ZMAGAZZINO_SRV.Merci" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="ClienteOrdineSet" Association="ZMAGAZZINO_SRV.ClienteOrdine" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ClienteSet" Role="FromRole_ClienteOrdine"/>
+                    <End EntitySet="OrdineSet" Role="ToRole_ClienteOrdine"/>
+                </AssociationSet>
+                <AssociationSet Name="FornitoreOrdineSet" Association="ZMAGAZZINO_SRV.FornitoreOrdine" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FornitoreSet" Role="FromRole_FornitoreOrdine"/>
+                    <End EntitySet="OrdineSet" Role="ToRole_FornitoreOrdine"/>
+                </AssociationSet>
+                <AssociationSet Name="OrdineMerciSet" Association="ZMAGAZZINO_SRV.OrdineMerci" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="OrdineSet" Role="FromRole_OrdineMerci"/>
+                    <End EntitySet="MerciSet" Role="ToRole_OrdineMerci"/>
+                </AssociationSet>
+                <AssociationSet Name="MagazzinoMerceSet" Association="ZMAGAZZINO_SRV.MagazzinoMerce" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="MagazzinoSet" Role="FromRole_MagazzinoMerce"/>
+                    <End EntitySet="MerciSet" Role="ToRole_MagazzinoMerce"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://virtualhost:500/sap/opu/odata/sap/ZMAGAZZINO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://virtualhost:500/sap/opu/odata/sap/ZMAGAZZINO_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
