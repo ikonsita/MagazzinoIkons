@@ -8,8 +8,22 @@ sap.ui.define([
         "use strict";
 
         return Controller.extend("com.sap.magazzinoikons.controller.Merci", {
-            onInit: function () {
+            onInit: function(){
+                //VARIABLES DEFINITION
+                var filters = [];
 
-            }
-        });
+                //READING TO LIST FOR LOGGED USER
+                this.getOwnerComponent().getModel().read("/MerciSet", {
+                    filters: filters,
+                    urlParameters: {
+                        //"$expand": "TODetailSet"
+                    },
+                    success: function(data) {
+                        this.getOwnerComponent().getModel("GeneralModel").setProperty("/Dati", data.results);
+                        
+                    }.bind(this),
+                    error: function(error) {}.bind(this)
+                });
+            },
+        })
     });

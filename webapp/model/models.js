@@ -18,6 +18,10 @@ sap.ui.define([
                 var oModel = new JSONModel(Device);
                 oModel.setDefaultBindingMode("OneWay");
                 return oModel;
-        }
+            },
+            createGeneralModel: function() {
+                var oModel = new JSONModel({"Dati": []});
+                return oModel;
+            },
     };
 });
