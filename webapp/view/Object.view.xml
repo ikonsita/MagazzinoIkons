@@ -1,0 +1,25 @@
+<mvc:View controllerName="com.sap.magazzinoikons.controller.Object"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+	<Page
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+	<ObjectHeader
+		title="{GeneralModel>DescMag}"
+
+		number="{
+			parts:[{path:'GeneralModel>PrezzoldMercMag'}],
+			type: 'sap.ui.model.type.Currency',
+			formatOptions: {showMeasure: false}
+		}"
+		numberUnit="EUR"
+		class="sapUiResponsivePadding--header" >
+		<ObjectAttribute text="Quantità in magazzino: {GeneralModel>QuantdispMercMag}" />
+		<ObjectAttribute text="Categoria: {GeneralModel>CategMercMag}" />
+		<ObjectAttribute text="Peso: {GeneralModel>PesoMercMag}" />
+        <ObjectAttribute text="Dimensione: {GeneralModel>DimMercMag}" />
+        <ObjectAttribute text="Descrizione: {GeneralModel>NoteMercMag}" />
+	</ObjectHeader>
+    </Page>
+
+</mvc:View>

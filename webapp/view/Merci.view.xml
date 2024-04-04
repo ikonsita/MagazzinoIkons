@@ -1,7 +1,52 @@
 <mvc:View controllerName="com.sap.magazzinoikons.controller.Merci"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
-    </Page>
+    xmlns="sap.m"
+	xmlns:tnt="sap.tnt">
+	<ScrollContainer vertical="true" horizontal="false" height="100%">
+		<tnt:ToolHeader id="toolheader1" class="sapUiTinyMargin">
+			<Title text="Merci" wrapping="false">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="Disappear"/>
+				</layoutData>
+			</Title>
+		</tnt:ToolHeader>
+
+
+
+
+<List
+		items="{GeneralModel>/Dati}"
+		headerText="Products"
+		id="List1"
+		class="sapUiTinyMargin"
+		mode="MultiSelect"
+		>
+					<headerToolbar>
+         <Toolbar>
+            <Title text="Merci"/>
+            <ToolbarSpacer/>
+            <SearchField 
+               width="50%" 
+               search=".onSearch"/>
+			<Button icon="sap-icon://add" type="Emphasized" press="onNewInvoice"/>
+			<Button icon="sap-icon://delete" type="Emphasized" press="onDelete"/>
+         </Toolbar>
+      </headerToolbar>
+		<ObjectListItem
+			title="{GeneralModel>DescMag}"
+			type="Navigation"
+			               
+                press=".onPress" 
+			number="{
+				parts:[{path:'GeneralModel>PrezzoldMercMag'}],
+				type: 'sap.ui.model.type.Currency',
+				formatOptions: {showMeasure: false}
+			}"
+			numberUnit="EURO">
+
+			<ObjectAttribute text="Quantita disponibile: {GeneralModel>QuantdispMercMag}" />
+			<ObjectAttribute text="Descrizione: {GeneralModel>NoteMercMag}" />
+		</ObjectListItem>
+	</List>
+		</ScrollContainer>
 </mvc:View>

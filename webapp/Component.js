@@ -29,6 +29,11 @@ sap.ui.define([
 
                 // set the device model
                 this.setModel(models.createDeviceModel(), "device");
+                this.setModel(models.createGeneralModel(), "GeneralModel");
+                this.setModel(models.createFilterModel(), "FilterModel");
+                this.setModel(models.createNewInvoiceModel(), "NewInvoiceModel");
+                this.setModel(models.createDominioModel(), "DominioModel");
+                this.setModel(models.createDominioModel(), "IVAModel");
             }
         });
     }

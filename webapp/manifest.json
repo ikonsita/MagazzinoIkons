@@ -44,7 +44,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.122.1",
       "libs": {
@@ -94,20 +94,33 @@
       },
       "routes": [
         {
-          "name": "RouteMerci",
+          "name": "Merci",
           "pattern": ":?query:",
           "target": [
-            "TargetMerci"
+            "Merci"
+          ]
+        },
+        {
+          "name": "Page2",
+          "pattern": "Page2/{MerciPath}",
+          "target": [
+            "Page2"
           ]
         }
       ],
       "targets": {
-        "TargetMerci": {
+        "Merci": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "Merci",
           "viewName": "Merci"
+        },
+        "Page2": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Object"
         }
       }
     },
