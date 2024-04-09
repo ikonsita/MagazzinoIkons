@@ -4,12 +4,13 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
     "sap/m/Dialog",
     'sap/m/MessageToast',
+    "sap/ui/core/routing/History"
     
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller,Filter,FilterOperator,Dialog,MessageToast) {
+    function (Controller,Filter,FilterOperator,Dialog,MessageToast,History) {
         "use strict";
 
         return Controller.extend("com.sap.magazzinoikons.controller.Merci", {
@@ -196,6 +197,7 @@ sap.ui.define([
                     this.getView().byId("Valuta").setValue(oSelectedData.ValMercMag);
                     this.getView().byId("IdMagazzino").setValue(oSelectedData.IdMagazzino);
                     this.getView().byId("IdOrdine").setValue(oSelectedData.IdOrdine);
+                    this.getView().byId("Immaggine").setValue(oSelectedData.Imagee);
                 } else {
                     console.error("Merce non trovata per l'ID selezionato:", sSelectedId);
                 }
@@ -237,6 +239,17 @@ sap.ui.define([
                     }.bind(this)
                 });
                 
-            }
+            },
+            onBack() {
+                const oHistory = History.getInstance();
+                const sPreviousHash = oHistory.getPreviousHash();
+    
+                if (sPreviousHash !== undefined) {
+                    window.history.go(-1);
+                } else {
+                    const oRouter = this.getOwnerComponent().getRouter();
+                    oRouter.navTo("Home", {}, true);
+                }
+            },
         });
     });

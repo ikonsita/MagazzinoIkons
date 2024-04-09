@@ -1,0 +1,47 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+	<Dialog id="NewInvoice" title="Nuovo Magazzino">
+		<Wizard id="NewInvoiceWiz" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler">
+			<WizardStep id="GeneralInfo" title="Informazioni Generali" validated="true">
+				<f:SimpleForm editable="true" layout="ColumnLayout">
+					<f:content>
+						<Label for="Nome" text="Nome"/>
+						<Input id="Nome" value="{NewMagModel>/Nome}" required="true"/>
+
+						<Label for="Indirizzo" text="Indirizzo"/>
+						<Input id="Indirizzo" value="{NewMagModel>/Indirizzo}" required="true"/>
+
+						<Label for="Citta" text="Citta"/>
+						<Input id="Citta" value="{NewMagModel>/Citta}" required="true"/>
+
+                        <Label for="Provincia" text="Provincia"/>
+						<Input id="Provincia" value="{NewMagModel>/Provincia}" required="true"/>
+
+						<Label for="Cap" text="Cap"/>
+						<Input id="Cap" value="{NewMagModel>/Cap}" required="true"/>
+					
+						<Label for="Orari" text="Orari"/>
+						<Input id="Orari" value="{NewMagModel>/Orari}" required="true"/>
+						
+
+						<Label for="Scaffale" text="Scaffale"/>
+						<Input id="Scaffale" value="{NewMagModel>/Scaffale}" required="true"/>
+
+                        <Label for="Reparto" text="Reparto"/>
+						<Input id="Reparto" value="{NewMagModel>/Reparto}" required="true"/>
+
+                        <Label for="Area" text="Area"/>
+						<Input id="Area" value="{NewMagModel>/Area}" required="true"/>
+					</f:content>
+				</f:SimpleForm>
+			</WizardStep>
+		</Wizard>
+		<footer>
+			<OverflowToolbar class="noBorderBottom">
+				<ToolbarSpacer/>
+				<Button text="{i18n>save}" press="onSaveNewInvoice" type="Accept" icon="sap-icon://save"/>
+				<Button text="{i18n>close}" press="onCloseNewInvoiceDialog" type="Reject" icon="sap-icon://decline"/>
+			</OverflowToolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>

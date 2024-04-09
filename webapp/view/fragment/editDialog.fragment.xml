@@ -25,7 +25,9 @@
 				<f:SimpleForm editable="true" layout="ColumnLayout">
 					<f:content>
 						<Label for="Disponibilita" text="Disponibilita Merce"/>
-						<Input id="Disponibilita" value="{DataModel>/DispMercMag}" required="true"/>
+						<ComboBox selectedKey="{NewInvoiceModel>/DispMercMag}" required="true" items="{ path: 'DominioModel>/DispMercMag' }">
+							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
+						</ComboBox>
 
 						<Label for="Peso" text="Peso Merce"/>
 						<Input id="Peso" value="{DataModel>/PesoMercMag}" required="true"/>
@@ -56,13 +58,13 @@
 						<Input id="Valuta" value="{DataModel>/ValMercMag}" required="true"/>
 
 						<Label for="IdMagazzino" text="Codice Magazzino"/>
-						<ComboBox selectedKey="{DataModel>/IdMagazzino}" id="IdMagazzino" required="true" items="{ path: 'DominioModel>/IdMagazzino' }">
-							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
+						<ComboBox selectedKey="{DataModel>/IdMagazzino}" id="IdMagazzino" required="true" items="{ path: 'MagModel>/IdMagazzino' }">
+							<core:Item key="{MagModel>}" text="{MagModel>}"/>
 						</ComboBox>
 
 						<Label for="IdOrdine" text="Codice Ordine"/>
-						<ComboBox selectedKey="{DataModel>/IdOrdine}" id="IdOrdine" required="true" items="{ path: 'DominioModel>/IdOrdine' }">
-							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
+						<ComboBox selectedKey="{DataModel>/IdOrdine}" id="IdOrdine" required="true" items="{ path: 'OrdModel>/IdOrdine' }">
+							<core:Item key="{OrdModel>}" text="{OrdModel>}"/>
 						</ComboBox>
 					</f:content>
 				</f:SimpleForm>

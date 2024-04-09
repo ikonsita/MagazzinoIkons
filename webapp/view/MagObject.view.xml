@@ -1,0 +1,50 @@
+<mvc:View controllerName="com.sap.magazzinoikons.controller.MagObject"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:ux="sap.uxap">
+	<Page
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+	<ObjectHeader
+		title="{MagazzinoModel>Nome}"
+		class="sapUiResponsivePadding--header" 
+		>
+	</ObjectHeader>
+	<ux:ObjectPageHeaderContent >
+		<ux:content>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Indirizzo:"/>
+				<Text text="{MagazzinoModel>Indirizzo}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Citta"/>
+				<Text text="{MagazzinoModel>Citta}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Provincia"/>
+				<Text text="{MagazzinoModel>Provincia}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Cap"/>
+				<Text text="{MagazzinoModel>Cap}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Disponibilita"/>
+				<Text text="{MagazzinoModel>Orari}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Scaffale"/>
+				<Text text="{MagazzinoModel>Scaffale}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Reparto"/>
+				<Text text="{MagazzinoModel>Reparto}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Area"/>
+				<Text text="{MagazzinoModel>Area}"/>
+			</layout:VerticalLayout>
+		</ux:content>
+	</ux:ObjectPageHeaderContent>
+    </Page>
+
+</mvc:View>

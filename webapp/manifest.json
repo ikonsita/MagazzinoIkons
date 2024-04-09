@@ -94,10 +94,24 @@
       },
       "routes": [
         {
-          "name": "Merci",
+          "name": "Home",
           "pattern": ":?query:",
           "target": [
+            "Home"
+          ]
+        },
+        {
+          "name": "Merci",
+          "pattern": "Merci",
+          "target": [
             "Merci"
+          ]
+        },
+        {
+          "name": "Magazzino",
+          "pattern": "Magazzino",
+          "target": [
+            "Magazzino"
           ]
         },
         {
@@ -106,9 +120,23 @@
           "target": [
             "Page2"
           ]
+        },
+        {
+          "name": "MagObject",
+          "pattern": "MagObject/{MagazzinoPath}",
+          "target": [
+            "MagObject"
+          ]
         }
       ],
       "targets": {
+        "Home": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Home",
+          "viewName": "Home"
+        },
         "Merci": {
           "viewType": "XML",
           "transition": "slide",
@@ -116,11 +144,24 @@
           "viewId": "Merci",
           "viewName": "Merci"
         },
+        "Magazzino": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Magazzino",
+          "viewName": "Magazzino"
+        },
         "Page2": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewName": "Object"
+        },
+        "MagObject": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "MagObject"
         }
       }
     },

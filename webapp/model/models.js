@@ -56,41 +56,35 @@ sap.ui.define([
                     var uniqueIvaValues = {};
                     var IdMerci = [];
                     var uniqueIdValues = {};
-                    var IdMagazzino = [];
-                    var uniqueIdMagValues = {};
-                    var IdOrdine = [];
-                    var uniqueIdOrdValues = {};
+
+                    var DispMercMag = [];
+                    var uniqueDispValues = {};
 
                     
                     data.d.results.forEach(function(entity) {
                         var ivaValue = entity.IvaMercMag;
                         var idValue = entity.IdMerci;
-                        var idMagValue = entity.IdMagazzino;
-                        var idOrdValue = entity.IdOrdine;
+                        var dispValue = entity.DispMercMag;
+
 
                         if (!uniqueIvaValues[ivaValue]) {
                             uniqueIvaValues[ivaValue] = true; 
                             IvaMercMag.push(ivaValue);
                         }
-                        if (!uniqueIdMagValues[idValue]) {
-                            uniqueIdMagValues[idValue] = true; 
+                        if (!uniqueIdValues[idValue]) {
+                            uniqueIdValues[idValue] = true; 
                             IdMerci.push(idValue);
                         }
-                        if (!uniqueIdValues[idMagValue]) {
-                            uniqueIdValues[idMagValue] = true; 
-                            IdMagazzino.push(idMagValue);
-                        }
-                        if (!uniqueIdOrdValues[idOrdValue]) {
-                            uniqueIdOrdValues[idOrdValue] = true; 
-                            IdOrdine.push(idOrdValue);
+                        if (!uniqueDispValues[dispValue]) {
+                            uniqueDispValues[dispValue] = true; 
+                            DispMercMag.push(dispValue);
                         }
                     });
 
                     var combinedData = {
                         "IvaMercMag": IvaMercMag,
                         "IdMerci": IdMerci,
-                        "IdMagazzino": IdMagazzino,
-                        "IdOrdine": IdOrdine
+                        "DispMercMag": DispMercMag
                     };
 
                     oModel.setData(combinedData); 
@@ -103,14 +97,116 @@ sap.ui.define([
 
             return oModel;
         },
-        createControlModel: function() {
-			return new JSONModel({
-				editable: false
-			});
-		},
+        createMagModel: function() {
+            var oModel = new JSONModel();
+
+            $.ajax({
+                url: "/sap/opu/odata/sap/ZMAGAZZINO_SRV/MagazzinoSet?$format=json", 
+                method: "GET",
+                success: function(data) {
+                    
+                    var IdMagazzino = [];
+                    var uniqueIdMagValues = {};
+
+                    data.d.results.forEach(function(entity) {
+        
+                        var idMagValue = entity.IdMagazzino;
+
+                        if (!uniqueIdMagValues[idMagValue]) {
+                            uniqueIdMagValues[idMagValue] = true; 
+                            IdMagazzino.push(idMagValue);
+                        }
+                    });
+
+                    var MagazzinoData = {
+                        "IdMagazzino": IdMagazzino,
+                    };
+
+                    oModel.setData(MagazzinoData); 
+                    console.log(MagazzinoData);
+                },
+                error: function(error) {
+                    console.error("Errore durante il recupero dei dati dal backend:", error);
+                }
+            });
+
+            return oModel;
+        },
+        createOrdModel: function() {
+            var oModel = new JSONModel();
+
+            $.ajax({
+                url: "/sap/opu/odata/sap/ZMAGAZZINO_SRV/OrdineSet?$format=json", 
+                method: "GET",
+                success: function(data) {
+                    
+                    var IdOrdine = [];
+                    var uniqueIdOrdValues = {};
+
+                    
+                    data.d.results.forEach(function(entity) {
+                    
+                        var idOrdValue = entity.IdOrdine;
+
+                        if (!uniqueIdOrdValues[idOrdValue]) {
+                            uniqueIdOrdValues[idOrdValue] = true; 
+                            IdOrdine.push(idOrdValue);
+                        }
+                    });
+
+                    var OrdineData = {
+                        "IdOrdine": IdOrdine
+                    };
+
+                    oModel.setData(OrdineData); 
+                    console.log(OrdineData);
+                },
+                error: function(error) {
+                    console.error("Errore durante il recupero dei dati dal backend:", error);
+                }
+            });
+
+            return oModel;
+        },
         createDataModel: function() {
 			var oModel = new JSONModel({ "DispMercMag": '' });
 			return oModel;
 		},
+        createMagazzinoModel: function() {
+			var oModel = new JSONModel({"Magazzini": []});
+			return oModel;
+		},
+        createFilterMagModel: function() {
+			var oModel = new JSONModel({"Nome": ''});
+			return oModel;
+		},
+        createNewMagModel: function() {
+			return new JSONModel({
+				Nome: "",
+				Indirizzo: "",
+				Citta: "",
+                Provincia: "",
+                Cap: "",
+                Orari: "",
+				Scaffale: "",
+				Reparto: "",
+                Area: ""
+				
+			});
+		},
+        createEditModel: function() {
+			var oModel = new JSONModel({ 
+                Nome: "",
+				Indirizzo: "",
+				Citta: "",
+                Provincia: "",
+                Cap: "",
+                Orari: "",
+				Scaffale: "",
+				Reparto: "",
+                Area: "" 
+            });
+			return oModel;
+		}
     };
 });

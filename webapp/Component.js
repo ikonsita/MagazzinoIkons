@@ -34,8 +34,13 @@ sap.ui.define([
                 this.setModel(models.createNewInvoiceModel(), "NewInvoiceModel");
                 this.setModel(models.createDominioModel(), "DominioModel");
                 this.setModel(models.createDominioModel(), "IVAModel");
-                this.setModel(models.createControlModel(), "ControlModel");
                 this.setModel(models.createDataModel(), "createDataModel");
+                this.setModel(models.createMagazzinoModel(), "MagazzinoModel");
+                this.setModel(models.createMagModel(), "MagModel");
+                this.setModel(models.createOrdModel(), "OrdModel");
+                this.setModel(models.createFilterMagModel(), "FilterMagModel");
+                this.setModel(models.createNewMagModel(), "NewMagModel");
+                this.setModel(models.createEditModel(), "EditModel");
             }
         });
     }

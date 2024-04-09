@@ -1,47 +1,46 @@
-<mvc:View controllerName="com.sap.magazzinoikons.controller.Merci"
+<mvc:View controllerName="com.sap.magazzinoikons.controller.Magazzino"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
 	xmlns:tnt="sap.tnt">
 	<ScrollContainer vertical="true" horizontal="false" height="100%">
 		<tnt:ToolHeader id="toolheader1">
 			<FlexBox alignItems="Start" justifyContent="SpaceBetween" width="100%">
-				<Title text="Merci" wrapping="false" />
+				<Title text="Magazzini" wrapping="false" />
 				<Button icon="sap-icon://nav-back" press="onBack" />
 			</FlexBox>
 		</tnt:ToolHeader>
 
 <List
-		items="{GeneralModel>/Dati}"
-		headerText="Products"
-		id="List1"
+		items="{MagazzinoModel>/Magazzini}"
+		id="List"
 		class="sapUiTinyMargin"
 		mode="MultiSelect"
 		selectionChange=".onChoice"
 		>
 					<headerToolbar>
          <Toolbar>
-            <Title text="Merci"/>
+            <Title text="Magazzini"/>
             <ToolbarSpacer/>
             <SearchField 
                width="50%" 
                search=".onSearch"/>
 			<Button text="Aggiungi" icon="sap-icon://add" type="Emphasized" press="onNewInvoice"/>
+			<Button text="Modifica" icon="sap-icon://edit" type="Success" press="onEdit"/>
+			<Button
+			text="Elimina"
+			type="Reject"
+			icon="sap-icon://delete"
+			press=".onApproveDialogPress"
+			ariaHasPopup="Dialog" />
          </Toolbar>
       </headerToolbar>
 		<ObjectListItem
-			title="{GeneralModel>DescMag}"
+			title="{MagazzinoModel>Nome}"
 			type="Navigation"
-			               
-                press=".onPress" 
-			number="{
-				parts:[{path:'GeneralModel>PrezzoldMercMag'}],
-				type: 'sap.ui.model.type.Currency',
-				formatOptions: {showMeasure: false}
-			}"
-			numberUnit="EURO">
+			press=".onPress">
 
-			<ObjectAttribute text="Quantita disponibile: {GeneralModel>QuantdispMercMag}" />
-			<ObjectAttribute text="Descrizione: {GeneralModel>NoteMercMag}" />
+			<ObjectAttribute text="Indirizzo: {MagazzinoModel>Indirizzo}" />
+			<ObjectAttribute text="Provincia: {MagazzinoModel>Provincia}" />
 		</ObjectListItem>
 	</List>
 		</ScrollContainer>

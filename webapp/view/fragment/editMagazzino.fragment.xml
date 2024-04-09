@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+	<Dialog id="edit" title="Modifica Merce">
+		<Wizard id="ModificaMerce" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler">
+			<WizardStep id="GeneralInfos" title="Informazioni Generali" validated="true">
+				<f:SimpleForm editable="true" layout="ColumnLayout">
+					<f:content>
+                        <Label for="IdMagazzino" text="IdMagazzino"/>
+                        <ComboBox selectedKey="{EditModel>/IdMagazzino}" change="onIdMagazzinoChange" id="IdMagazzino" required="true" items="{ path: 'MagModel>/IdMagazzino' }">
+							<core:Item key="{MagModel>}" text="{MagModel>}"/>
+						</ComboBox>
+
+						<Label for="NomeMag" text="NomeMag"/>
+						<Input id="NomeMag" value="{EditModel>/Nome}" required="true"/>
+
+						<Label for="Indirizzo" text="Indirizzo"/>
+						<Input id="Indirizzo" value="{EditModel>/Indirizzo}" required="true"/>
+
+						<Label for="Citta" text="Citta"/>
+						<Input id="Citta" value="{EditModel>/Citta}" required="true"/>
+
+                        <Label for="Provincia" text="Provincia"/>
+						<Input id="Provincia" value="{EditModel>/Provincia}" required="true"/>
+
+						<Label for="Cap" text="Cap"/>
+						<Input id="Cap" value="{EditModel>/Cap}" required="true"/>
+					
+						<Label for="Orari" text="Orari"/>
+						<Input id="Orari" value="{EditModel>/Orari}" required="true"/>
+						
+
+						<Label for="Scaffale" text="Scaffale"/>
+						<Input id="Scaffale" value="{EditModel>/Scaffale}" required="true"/>
+
+                        <Label for="Reparto" text="Reparto"/>
+						<Input id="Reparto" value="{EditModel>/Reparto}" required="true"/>
+
+                        <Label for="Area" text="Area"/>
+						<Input id="Area" value="{EditModel>/Area}" required="true"/>
+					</f:content>
+				</f:SimpleForm>
+			</WizardStep>
+		</Wizard>
+		<footer>
+			<OverflowToolbar class="noBorderBottom">
+				<ToolbarSpacer/>
+				<Button text="{i18n>save}" press="onPressEdit" type="Accept" icon="sap-icon://save"/>
+				<Button text="{i18n>close}" press="onCloseEditDialog" type="Reject" icon="sap-icon://decline"/>
+			</OverflowToolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>
