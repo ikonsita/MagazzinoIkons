@@ -1,25 +1,53 @@
 <mvc:View controllerName="com.sap.magazzinoikons.controller.Object"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:ux="sap.uxap">
 	<Page
 		showNavButton="true"
 		navButtonPress=".onNavBack">
 	<ObjectHeader
 		title="{GeneralModel>DescMag}"
-
+		icon="{GeneralModel>Image}"
+		iconDensityAware="true"
+		iconAlt="Image"
+		imageShape="Square"
+		
 		number="{
 			parts:[{path:'GeneralModel>PrezzoldMercMag'}],
 			type: 'sap.ui.model.type.Currency',
 			formatOptions: {showMeasure: false}
 		}"
 		numberUnit="EUR"
-		class="sapUiResponsivePadding--header" >
-		<ObjectAttribute text="Quantità in magazzino: {GeneralModel>QuantdispMercMag}" />
-		<ObjectAttribute text="Categoria: {GeneralModel>CategMercMag}" />
-		<ObjectAttribute text="Peso: {GeneralModel>PesoMercMag}" />
-        <ObjectAttribute text="Dimensione: {GeneralModel>DimMercMag}" />
-        <ObjectAttribute text="Descrizione: {GeneralModel>NoteMercMag}" />
+		class="sapUiResponsivePadding--header" 
+		>
 	</ObjectHeader>
+	<ux:ObjectPageHeaderContent >
+		<ux:content>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Quantita:"/>
+				<Text text="{GeneralModel>QuantdispMercMag}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Categoria"/>
+				<Text text="{GeneralModel>CategMercMag}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Peso"/>
+				<Text text="{GeneralModel>PesoMercMag}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Dimesioni"/>
+				<Text text="{GeneralModel>DimMercMag}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Disponibilita"/>
+				<Text text="{GeneralModel>DispMercMag}"/>
+			</layout:VerticalLayout>
+			<layout:VerticalLayout class="sapUiSmallMarginTopBottom">
+				<Label text="Note"/>
+				<Text text="{GeneralModel>NoteMercMag}"/>
+			</layout:VerticalLayout>
+		</ux:content>
+	</ux:ObjectPageHeaderContent>
     </Page>
 
 </mvc:View>

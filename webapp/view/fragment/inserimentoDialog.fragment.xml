@@ -1,51 +1,64 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
 	xmlns:u="sap.ui.unified">
 	<Dialog id="NewInvoice" title="Nuova Merce">
-		<Wizard id="NewInvoiceWizard" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler">
-			<WizardStep id="GeneralInfoStep" title="Informazioni Generali" validated="true">
+		<Wizard id="NewInvoiceWiz" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler">
+			<WizardStep id="GeneralInfo" title="Informazioni Generali" validated="true">
 				<f:SimpleForm editable="true" layout="ColumnLayout">
 					<f:content>
-						<Label for="DescMag" text="Nome Merce"/>
-						<Input id="DescMag" value="{NewInvoiceModel>/DescMag}" required="true"/>
+						<Label for="NomeMerce" text="Nome Merce"/>
+						<Input id="NomeMerce" value="{NewInvoiceModel>/DescMag}" required="true"/>
 
 						<Label for="Categoria" text="Categoria"/>
-						<Input id="Categoria" value="{NewInvoiceModel>/CategMercMag}" required="true"/>
+						<Input id="Catego" value="{NewInvoiceModel>/CategMercMag}" required="true"/>
 
 						<Label for="Quantita" text="Quantita disponibile"/>
-						<Input id="Quantita" value="{NewInvoiceModel>/QuantdispMercMag}" required="true"/>
+						<Input id="Quant" value="{NewInvoiceModel>/QuantdispMercMag}" required="true"/>
 					</f:content>
 				</f:SimpleForm>
 			</WizardStep>
-			<WizardStep id="MaterialStep" title="Info Merce" validated="true">
+			<WizardStep id="Material" title="Info Merce" validated="true">
 				<f:SimpleForm editable="true" layout="ColumnLayout">
 					<f:content>
 						<Label for="Disponibilita" text="Disponibilita Merce"/>
-						<Input id="Disponibilita" value="{NewInvoiceModel>/DispMercMag}" required="true"/>
+						<Input id="Disp" value="{NewInvoiceModel>/DispMercMag}" required="true"/>
 
 						<Label for="Peso" text="Peso Merce"/>
-						<Input id="Peso" value="{NewInvoiceModel>/PesoMercMag}" required="true"/>
+						<Input id="PesoMerce" value="{NewInvoiceModel>/PesoMercMag}" required="true"/>
 
                         <Label for="Dimensioni" text="Dimensioni Merce"/>
-						<Input id="Dimensioni" value="{NewInvoiceModel>/DimMercMag}" required="true"/>
+						<Input id="DimensioniMerce" value="{NewInvoiceModel>/DimMercMag}" required="true"/>
 
                         <Label for="Note" text="Note Merce"/>
-						<TextArea id="Note" value="{NewInvoiceModel>/NoteMercMag}" required="true"/>
+						<TextArea id="NoteMerce" value="{NewInvoiceModel>/NoteMercMag}" required="true"/>
+
+						<Label for="Immaggine" text="Immaggine"/>
+						<TextArea id="ImmaggineMerce" value="{NewInvoiceModel>/Image}" required="true"/>
 					</f:content>
 				</f:SimpleForm>
 			</WizardStep>
-			<WizardStep id="PriceData" title="Info Prezzo" validated="false">
+			<WizardStep id="Price" title="Info Prezzo" validated="false">
 				<f:SimpleForm editable="true" layout="ColumnLayout">
 					<f:content>
 						<Label for="Prezzo" text="Prezzo"/>
-						<Input id="Prezzo" value="{NewInvoiceModel>/PrezzoldMercMag}" required="true"/>
+						<Input id="PrezzoMerce" value="{NewInvoiceModel>/PrezzoldMercMag}" required="true"/>
 
 						<Label for="iva" text="Iva"/>
-						<ComboBox selectedKey="{NewInvoiceModel>/IvaMercMag}" required="true" items="{ path: 'IVAModel>/' }">
-							<core:Item key="{IVAModel>}" text="{IVAModel>}"/>
+						<ComboBox selectedKey="{NewInvoiceModel>/IvaMercMag}" required="true" items="{ path: 'DominioModel>/IvaMercMag' }">
+							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
 						</ComboBox>
 
 						<Label for="Valuta" text="Valuta"/>
-						<Input id="Valuta" value="{NewInvoiceModel>/ValMercMag}" required="true"/>
+						<Input id="ValutaMerce" value="{NewInvoiceModel>/ValMercMag}" required="true"/>
+
+						<Label for="IdMagazzino" text="Codice Magazzino"/>
+						<ComboBox selectedKey="{NewInvoiceModel>/IdMagazzino}" required="true" items="{ path: 'DominioModel>/IdMagazzino' }">
+							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
+						</ComboBox>
+
+						<Label for="IdOrdine" text="Codice Ordine"/>
+						<ComboBox selectedKey="{NewInvoiceModel>/IdOrdine}" required="true" items="{ path: 'DominioModel>/IdOrdine' }">
+							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
+						</ComboBox>
 					</f:content>
 				</f:SimpleForm>
 			</WizardStep>

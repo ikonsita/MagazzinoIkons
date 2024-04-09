@@ -1,0 +1,79 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+	<Dialog id="closedit" title="Modifica Merce">
+		<Wizard id="NewInvoiceWizard" class="sapUiResponsivePadding--header sapUiResponsivePadding--content" complete="wizardCompletedHandler">
+			<WizardStep id="GeneralInfoStep" title="Informazioni Generali" validated="true">
+				<f:SimpleForm editable="true" layout="ColumnLayout">
+					<f:content>
+						<Label for="IdMerci" text="Codice Merce"/>
+						<ComboBox selectedKey="{DataModel>/IdMerci}" id="IdMerci" change="onIdMerciChange" required="true" items="{ path: 'DominioModel>/IdMerci' }">
+							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
+						</ComboBox>
+
+						<Label for="DescMag" text="Nome Merce"/>
+						<Input id="DescMag" value="{DataModel>/DescMag}" required="true"/>
+
+						<Label for="Categoria" text="Categoria"/>
+						<Input id="Categoria" value="{DataModel>/CategMercMag}" required="true"/>
+
+						<Label for="Quantita" text="Quantita disponibile"/>
+						<Input id="Quantita" value="{DataModel>/QuantdispMercMag}" required="true"/>
+					</f:content>
+				</f:SimpleForm>
+			</WizardStep>
+			<WizardStep id="MaterialStep" title="Info Merce" validated="true">
+				<f:SimpleForm editable="true" layout="ColumnLayout">
+					<f:content>
+						<Label for="Disponibilita" text="Disponibilita Merce"/>
+						<Input id="Disponibilita" value="{DataModel>/DispMercMag}" required="true"/>
+
+						<Label for="Peso" text="Peso Merce"/>
+						<Input id="Peso" value="{DataModel>/PesoMercMag}" required="true"/>
+
+                        <Label for="Dimensioni" text="Dimensioni Merce"/>
+						<Input id="Dimensioni" value="{DataModel>/DimMercMag}" required="true"/>
+
+                        <Label for="Note" text="Note Merce"/>
+						<TextArea id="Note" value="{DataModel>/NoteMercMag}" required="true"/>
+
+						<Label for="Immaggine" text="Immaggine"/>
+						<TextArea id="Immaggine" value="{DataModel>/Image}" required="true"/>
+					</f:content>
+				</f:SimpleForm>
+			</WizardStep>
+			<WizardStep id="PriceData" title="Info Prezzo" validated="false">
+				<f:SimpleForm editable="true" layout="ColumnLayout">
+					<f:content>
+						<Label for="Prezzo" text="Prezzo"/>
+						<Input id="Prezzo" value="{DataModel>/PrezzoldMercMag}" required="true"/>
+
+						<Label for="iva" text="Iva"/>
+						<ComboBox selectedKey="{DataModel>/IvaMercMag}" id="Iva" required="true" items="{ path: 'DominioModel>/IvaMercMag' }">
+							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
+						</ComboBox>
+
+						<Label for="Valuta" text="Valuta"/>
+						<Input id="Valuta" value="{DataModel>/ValMercMag}" required="true"/>
+
+						<Label for="IdMagazzino" text="Codice Magazzino"/>
+						<ComboBox selectedKey="{DataModel>/IdMagazzino}" id="IdMagazzino" required="true" items="{ path: 'DominioModel>/IdMagazzino' }">
+							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
+						</ComboBox>
+
+						<Label for="IdOrdine" text="Codice Ordine"/>
+						<ComboBox selectedKey="{DataModel>/IdOrdine}" id="IdOrdine" required="true" items="{ path: 'DominioModel>/IdOrdine' }">
+							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
+						</ComboBox>
+					</f:content>
+				</f:SimpleForm>
+			</WizardStep>
+		</Wizard>
+		<footer>
+			<OverflowToolbar class="noBorderBottom">
+				<ToolbarSpacer/>
+				<Button text="{i18n>save}" press="onPressEdit" type="Accept" icon="sap-icon://save"/>
+				<Button text="{i18n>close}" press="onCloseEdittDialog" type="Reject" icon="sap-icon://decline"/>
+			</OverflowToolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>

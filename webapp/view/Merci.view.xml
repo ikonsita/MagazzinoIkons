@@ -20,6 +20,7 @@
 		id="List1"
 		class="sapUiTinyMargin"
 		mode="MultiSelect"
+		selectionChange=".onChoice"
 		>
 					<headerToolbar>
          <Toolbar>
@@ -28,8 +29,7 @@
             <SearchField 
                width="50%" 
                search=".onSearch"/>
-			<Button icon="sap-icon://add" type="Emphasized" press="onNewInvoice"/>
-			<Button icon="sap-icon://delete" type="Emphasized" press="onDelete"/>
+			<Button text="Aggiungi" icon="sap-icon://add" type="Emphasized" press="onNewInvoice"/>
          </Toolbar>
       </headerToolbar>
 		<ObjectListItem

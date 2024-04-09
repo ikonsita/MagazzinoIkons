@@ -34,6 +34,8 @@ sap.ui.define([
                 this.setModel(models.createNewInvoiceModel(), "NewInvoiceModel");
                 this.setModel(models.createDominioModel(), "DominioModel");
                 this.setModel(models.createDominioModel(), "IVAModel");
+                this.setModel(models.createControlModel(), "ControlModel");
+                this.setModel(models.createDataModel(), "createDataModel");
             }
         });
     }

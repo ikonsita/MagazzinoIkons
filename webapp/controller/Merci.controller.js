@@ -47,14 +47,27 @@ sap.ui.define([
                 });
             },
             onNewInvoice: function() {
-                this.pDialog ??= this.loadFragment({
+                this.nDialog ??= this.loadFragment({
                     name: "com.sap.magazzinoikons.view.fragment.inserimentoDialog"
                 });
 
-                this.pDialog.then((oDialog) => oDialog.open());
+                this.nDialog.then((kDialog) => kDialog.open());
             },
             onSaveNewInvoice: function() {
                 var newInvoice = this.getOwnerComponent().getModel("NewInvoiceModel").getData();
+
+                var sPrezzoValue = newInvoice.PrezzoldMercMag;
+                if (isNaN(parseFloat(sPrezzoValue)) || parseFloat(sPrezzoValue) <= 0) {
+                    MessageToast.show("Inserire un prezzo valido maggiore di zero");
+                    return; // Interrompi il salvataggio se il prezzo non è valido
+                }
+
+                // Verifica se la quantità è un numero positivo
+                var sQuantitaValue = newInvoice.QuantdispMercMag;
+                if (isNaN(parseFloat(sQuantitaValue)) || parseFloat(sQuantitaValue) <= 0) {
+                    MessageToast.show("Inserire una quantità valida maggiore di zero");
+                    return; // Interrompi il salvataggio se la quantità non è valida
+                }
 
                 var that = this;
 
@@ -62,6 +75,7 @@ sap.ui.define([
                     method: "POST",
                     success: function(data) {
                         
+                        console.log(newInvoice)
                         that.getView().byId("NewInvoice").close();
                         MessageToast.show('Operazione effettuata correttamente');
                         
@@ -80,8 +94,11 @@ sap.ui.define([
             },
             onDelete: function(){
 	
-                var contentToBeSaved =  this.getView().byId("List1").getSelectedItems();
                 var that = this;
+
+                that.onCloseChoiceDialog();
+
+                var contentToBeSaved =  this.getView().byId("List1").getSelectedItems();
                 
                 this.getOwnerComponent().getModel().setUseBatch(false);
                 
@@ -117,5 +134,109 @@ sap.ui.define([
                     error: function(error) {}.bind(this)
                 });
             },
+            onChoice: function(oEvent) {
+                var oList = oEvent.getSource();
+                var oSelectedItem = oEvent.getParameter("listItem");
+            
+                // Verifica se l'elemento è già selezionato
+                if (oList.getSelectedItems().includes(oSelectedItem)) {
+                    // Apre il popup solo se l'elemento non è già selezionato
+                    this.pDialog ??= this.loadFragment({
+                        name: "com.sap.magazzinoikons.view.fragment.choiceDialog"
+                    });
+            
+                    this.pDialog.then((oDialog) => oDialog.open());
+                   
+                } else {
+                    oList.removeSelections();
+                    
+                }
+            },
+            onCloseChoiceDialog: function() {
+                this.getView().byId("choice").close();
+            },
+            onEdit: function() {
+                var that = this;
+
+                that.onCloseChoiceDialog();
+                
+                this.mDialog ??= this.loadFragment({
+                    name: "com.sap.magazzinoikons.view.fragment.editDialog"
+                });
+
+                this.mDialog.then((lDialog) => lDialog.open());
+            },
+            onCloseEditDialog: function() {
+                this.getView().byId("edit").close();
+            },
+            onIdMerciChange: function(oEvent) {
+                var oDataModel = this.getView().getModel("GeneralModel");
+                var sSelectedId = oEvent.getSource().getSelectedKey();
+
+                // Recupera l'array di dati
+                var aDati = oDataModel.getProperty("/Dati");
+
+                // Trova l'elemento corrispondente all'ID selezionato
+                var oSelectedData = aDati.find(function(item) {
+                    return item.IdMerci === sSelectedId;
+                });
+
+                // Verifica se l'elemento è stato trovato
+                if (oSelectedData) {
+                    // Popola gli input con i dati recuperati
+                    this.getView().byId("DescMag").setValue(oSelectedData.DescMag);
+                    this.getView().byId("Categoria").setValue(oSelectedData.CategMercMag);
+                    this.getView().byId("Quantita").setValue(oSelectedData.QuantdispMercMag);
+                    this.getView().byId("Disponibilita").setValue(oSelectedData.DispMercMag);
+                    this.getView().byId("Peso").setValue(oSelectedData.PesoMercMag);
+                    this.getView().byId("Dimensioni").setValue(oSelectedData.DimMercMag);
+                    this.getView().byId("Note").setValue(oSelectedData.NoteMercMag);
+                    this.getView().byId("Prezzo").setValue(oSelectedData.PrezzoldMercMag);
+                    this.getView().byId("Iva").setValue(oSelectedData.IvaMercMag);
+                    this.getView().byId("Valuta").setValue(oSelectedData.ValMercMag);
+                    this.getView().byId("IdMagazzino").setValue(oSelectedData.IdMagazzino);
+                    this.getView().byId("IdOrdine").setValue(oSelectedData.IdOrdine);
+                } else {
+                    console.error("Merce non trovata per l'ID selezionato:", sSelectedId);
+                }
+            },
+            onCloseEdittDialog: function() {
+                this.getView().byId("closedit").close();
+            },
+            onPressEdit: function(){
+			
+                var obj = {}; 
+
+                obj.IdMerci = this.byId("IdMerci").getValue();
+
+                obj.Image = this.byId("Immaggine").getValue();
+                obj.DescMag = this.byId("DescMag").getValue();
+                obj.CategMercMag = this.byId("Categoria").getValue();
+                obj.QuantdispMercMag = this.byId("Quantita").getValue();
+                obj.PrezzoldMercMag = this.byId("Prezzo").getValue();
+                obj.IvaMercMag = this.byId("Iva").getValue();
+                obj.ValMercMag = this.byId("Valuta").getValue();
+                obj.PesoMercMag = this.byId("Peso").getValue();
+                obj.DimMercMag = this.byId("Dimensioni").getValue();
+                obj.DispMercMag = this.byId("Disponibilita").getValue();
+                obj.NoteMercMag = this.byId("Note").getValue();
+                obj.IdMagazzino = this.byId("IdMagazzino").getValue();
+                obj.IdOrdine = this.byId("IdOrdine").getValue();
+
+                this.getOwnerComponent().getModel().setUseBatch(false);
+
+                this.getOwnerComponent().getModel().update("/MerciSet('" + obj.IdMerci + "')", obj, {
+                    method: "PUT",
+                    success: function(data) {
+                        MessageToast.show('Operazione effettuata correttamente');
+                        this.onCloseEdittDialog();
+                        this.onRecharge(); 
+                    }.bind(this),
+                    error: function(error) {
+                        console.error("Errore durante l'aggiornamento dell'entità:", error);
+                    }.bind(this)
+                });
+                
+            }
         });
     });

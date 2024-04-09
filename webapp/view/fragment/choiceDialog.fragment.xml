@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+    <Dialog title="Azioni" contentWidth="200px" id="choice">
+        <endButton>
+            <Button icon="sap-icon://decline" press=".onCloseChoiceDialog" />
+        </endButton>
+        <Button text="Modifica" press=".onEdit" type="Success" class="sapUiMediumMarginTopBottom sapUiLargeMarginBeginEnd" />
+        <Button text="Elimina" press="onDelete" type="Negative" />
+    </Dialog>
+</core:FragmentDefinition>

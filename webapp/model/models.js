@@ -32,15 +32,16 @@ sap.ui.define([
 				DescMag: "",
 				CategMercMag: "",
 				QuantdispMercMag: "",
+                DispMercMag: "",
+                PesoMercMag: "",
+                DimMercMag: "",
+				NoteMercMag: "",
 				PrezzoldMercMag: "",
                 IvaMercMag: "",
 				ValMercMag: "",
-				PesoMercMag: "",
-				DimMercMag: "",
-				DispMercMag: "",
-				NoteMercMag: "",
                 IdMagazzino: "",
-                IdOrdine: ""
+                IdOrdine: "",
+                Image: ""
 			});
 		},
         createDominioModel: function() {
@@ -51,21 +52,49 @@ sap.ui.define([
                 method: "GET",
                 success: function(data) {
                     
-                    var ivaValues = [];
+                    var IvaMercMag = [];
                     var uniqueIvaValues = {};
+                    var IdMerci = [];
+                    var uniqueIdValues = {};
+                    var IdMagazzino = [];
+                    var uniqueIdMagValues = {};
+                    var IdOrdine = [];
+                    var uniqueIdOrdValues = {};
 
                     
                     data.d.results.forEach(function(entity) {
                         var ivaValue = entity.IvaMercMag;
+                        var idValue = entity.IdMerci;
+                        var idMagValue = entity.IdMagazzino;
+                        var idOrdValue = entity.IdOrdine;
 
                         if (!uniqueIvaValues[ivaValue]) {
                             uniqueIvaValues[ivaValue] = true; 
-                            ivaValues.push(ivaValue);
+                            IvaMercMag.push(ivaValue);
+                        }
+                        if (!uniqueIdMagValues[idValue]) {
+                            uniqueIdMagValues[idValue] = true; 
+                            IdMerci.push(idValue);
+                        }
+                        if (!uniqueIdValues[idMagValue]) {
+                            uniqueIdValues[idMagValue] = true; 
+                            IdMagazzino.push(idMagValue);
+                        }
+                        if (!uniqueIdOrdValues[idOrdValue]) {
+                            uniqueIdOrdValues[idOrdValue] = true; 
+                            IdOrdine.push(idOrdValue);
                         }
                     });
 
-                    
-                    oModel.setData(ivaValues); 
+                    var combinedData = {
+                        "IvaMercMag": IvaMercMag,
+                        "IdMerci": IdMerci,
+                        "IdMagazzino": IdMagazzino,
+                        "IdOrdine": IdOrdine
+                    };
+
+                    oModel.setData(combinedData); 
+                    console.log(combinedData);
                 },
                 error: function(error) {
                     console.error("Errore durante il recupero dei dati dal backend:", error);
@@ -74,9 +103,14 @@ sap.ui.define([
 
             return oModel;
         },
-        createIVAModel: function() {
-			var oModel = new JSONModel({"ivaValues": []});
+        createControlModel: function() {
+			return new JSONModel({
+				editable: false
+			});
+		},
+        createDataModel: function() {
+			var oModel = new JSONModel({ "DispMercMag": '' });
 			return oModel;
-		}
+		},
     };
 });
