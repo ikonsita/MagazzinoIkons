@@ -4,14 +4,24 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator",
     "sap/m/Dialog",
     'sap/m/MessageToast',
-    "sap/ui/core/routing/History"
+    "sap/ui/core/routing/History",
+    "sap/m/Button",
+	"sap/m/library",
+    "sap/m/Text"
     
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller,Filter,FilterOperator,Dialog,MessageToast,History) {
+    function (Controller,Filter,FilterOperator,Dialog,MessageToast,History,Button,mobileLibrary,Text) {
         "use strict";
+
+        
+        // shortcut for sap.m.ButtonType
+        var ButtonType = mobileLibrary.ButtonType;
+
+        // shortcut for sap.m.DialogType
+        var DialogType = mobileLibrary.DialogType;
 
         return Controller.extend("com.sap.magazzinoikons.controller.Merci", {
             onInit: function() {
@@ -135,31 +145,7 @@ sap.ui.define([
                     error: function(error) {}.bind(this)
                 });
             },
-            onChoice: function(oEvent) {
-                var oList = oEvent.getSource();
-                var oSelectedItem = oEvent.getParameter("listItem");
-            
-                // Verifica se l'elemento è già selezionato
-                if (oList.getSelectedItems().includes(oSelectedItem)) {
-                    // Apre il popup solo se l'elemento non è già selezionato
-                    this.pDialog ??= this.loadFragment({
-                        name: "com.sap.magazzinoikons.view.fragment.choiceDialog"
-                    });
-            
-                    this.pDialog.then((oDialog) => oDialog.open());
-                   
-                } else {
-                    oList.removeSelections();
-                    
-                }
-            },
-            onCloseChoiceDialog: function() {
-                this.getView().byId("choice").close();
-            },
             onEdit: function() {
-                var that = this;
-
-                that.onCloseChoiceDialog();
                 
                 this.mDialog ??= this.loadFragment({
                     name: "com.sap.magazzinoikons.view.fragment.editDialog"
@@ -239,6 +225,32 @@ sap.ui.define([
                     }.bind(this)
                 });
                 
+            },
+            onApproveDialogPress: function () {
+                var that = this;
+                if (!this.oApproveDialog) {
+                    this.oApproveDialog = new Dialog({
+                        type: DialogType.Message,
+                        title: "Confirm",
+                        content: new Text({ text: "Vuoi eliminare la merce?" }),
+                        beginButton: new Button({
+                            type: ButtonType.Emphasized,
+                            text: "Submit",
+                            press: function () {
+                                that.onDelete();
+                                this.oApproveDialog.close();
+                            }.bind(this)
+                        }),
+                        endButton: new Button({
+                            text: "Cancel",
+                            press: function () {
+                                this.oApproveDialog.close();
+                            }.bind(this)
+                        })
+                    });
+                }
+    
+                this.oApproveDialog.open();
             },
             onBack() {
                 const oHistory = History.getInstance();

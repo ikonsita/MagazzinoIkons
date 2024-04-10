@@ -190,14 +190,14 @@ sap.ui.define([
                 if (oSelectedData) {
                     // Popola gli input con i dati recuperati
                     this.getView().byId("NomeMag").setValue(oSelectedData.Nome);
-                    this.getView().byId("Indirizzo").setValue(oSelectedData.Indirizzo);
-                    this.getView().byId("Citta").setValue(oSelectedData.Citta);
-                    this.getView().byId("Provincia").setValue(oSelectedData.Provincia);
-                    this.getView().byId("Cap").setValue(oSelectedData.Cap);
-                    this.getView().byId("Orari").setValue(oSelectedData.Orari);
-                    this.getView().byId("Scaffale").setValue(oSelectedData.Scaffale);
-                    this.getView().byId("Reparto").setValue(oSelectedData.Reparto);
-                    this.getView().byId("Area").setValue(oSelectedData.Area);
+                    this.getView().byId("Indir").setValue(oSelectedData.Indirizzo);
+                    this.getView().byId("Cit").setValue(oSelectedData.Citta);
+                    this.getView().byId("Prov").setValue(oSelectedData.Provincia);
+                    this.getView().byId("Capp").setValue(oSelectedData.Cap);
+                    this.getView().byId("Orar").setValue(oSelectedData.Orari);
+                    this.getView().byId("Scaf").setValue(oSelectedData.Scaffale);
+                    this.getView().byId("Repar").setValue(oSelectedData.Reparto);
+                    this.getView().byId("Areaa").setValue(oSelectedData.Area);
        
                 } else {
                     console.error("Merce non trovata per l'ID selezionato:", sSelectedId);
@@ -213,14 +213,14 @@ sap.ui.define([
                 obj.IdMagazzino = this.byId("IdMagazzino").getValue();
 
                 obj.Nome = this.byId("NomeMag").getValue();
-                obj.Indirizzo = this.byId("Indirizzo").getValue();
-                obj.Citta = this.byId("Citta").getValue();
-                obj.Provincia = this.byId("Provincia").getValue();
-                obj.Cap = this.byId("Cap").getValue();
-                obj.Orari = this.byId("Orari").getValue();
-                obj.Scaffale = this.byId("Scaffale").getValue();
-                obj.Reparto = this.byId("Reparto").getValue();
-                obj.Area = this.byId("Area").getValue();
+                obj.Indirizzo = this.byId("Indir").getValue();
+                obj.Citta = this.byId("Cit").getValue();
+                obj.Provincia = this.byId("Prov").getValue();
+                obj.Cap = this.byId("Capp").getValue();
+                obj.Orari = this.byId("Orar").getValue();
+                obj.Scaffale = this.byId("Scaf").getValue();
+                obj.Reparto = this.byId("Repar").getValue();
+                obj.Area = this.byId("Areaa").getValue();
 
                 this.getOwnerComponent().getModel().setUseBatch(false);
 

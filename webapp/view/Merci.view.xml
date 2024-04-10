@@ -26,6 +26,13 @@
                width="50%" 
                search=".onSearch"/>
 			<Button text="Aggiungi" icon="sap-icon://add" type="Emphasized" press="onNewInvoice"/>
+			<Button text="Modifica" icon="sap-icon://edit" type="Success" press="onEdit"/>
+			<Button
+			text="Elimina"
+			type="Reject"
+			icon="sap-icon://delete"
+			press=".onApproveDialogPress"
+			ariaHasPopup="Dialog" />
          </Toolbar>
       </headerToolbar>
 		<ObjectListItem
