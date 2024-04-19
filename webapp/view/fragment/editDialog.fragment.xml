@@ -25,7 +25,7 @@
 				<f:SimpleForm editable="true" layout="ColumnLayout">
 					<f:content>
 						<Label for="Disponibilita" text="Disponibilita Merce"/>
-						<ComboBox selectedKey="{NewInvoiceModel>/DispMercMag}" required="true" items="{ path: 'DominioModel>/DispMercMag' }">
+						<ComboBox selectedKey="{NewInvoiceModel>/DispMercMag}" id="Disponibilita" required="true" items="{ path: 'DominioModel>/DispMercMag' }">
 							<core:Item key="{DominioModel>}" text="{DominioModel>}"/>
 						</ComboBox>
 

@@ -16,6 +16,8 @@
 		class="sapUiTinyMargin"
 		mode="MultiSelect"
 		selectionChange=".onChoice"
+		growing="true"
+        growingThreshold="3"
 		>
 					<headerToolbar>
          <Toolbar>

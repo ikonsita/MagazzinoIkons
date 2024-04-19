@@ -41,6 +41,11 @@ sap.ui.define([
                 this.setModel(models.createFilterMagModel(), "FilterMagModel");
                 this.setModel(models.createNewMagModel(), "NewMagModel");
                 this.setModel(models.createEditModel(), "EditModel");
+                this.setModel(models.createUtenteModel(), "UtenteModel");
+                this.setModel(models.createLoginModel(), "LoginModel");
+                this.setModel(models.createRoleModel(), "RoleModel");      
+                this.setModel(models.createRegModel(), "RegModel");           
+                this.setModel(models.createPassModel(), "PassModel");           
             }
         });
     }

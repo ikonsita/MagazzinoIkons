@@ -1,1 +1,24 @@
-/* Enter your custom styles here */
+#application-comsapmagazzinoikons-display-component---Home--Gestionale-content{
+    background-image: url("../public/magazzinoIkons.jpeg");
+    background-size: contain;
+}
+
+#application-comsapmagazzinoikons-display-component---Login--inputEmail-inner  {
+    width: 600px;
+}
+
+#application-comsapmagazzinoikons-display-component---Login--inputPassword-inner{
+    width: 600px;
+}
+
+#__vbox0{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#application-comsapmagazzinoikons-display-component---Login--Ruolo-inner{
+    width: 600px;
+}
+

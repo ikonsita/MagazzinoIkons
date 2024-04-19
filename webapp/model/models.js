@@ -207,6 +207,88 @@ sap.ui.define([
                 Area: "" 
             });
 			return oModel;
-		}
+		},
+        createUtenteModel: function() {
+			var oModel = new JSONModel({"Utenti": []});
+			return oModel;
+		},
+        createRoleModel: function() {
+            var oModel = new JSONModel();
+
+            $.ajax({
+                url: "/sap/opu/odata/sap/ZMAGAZZINO_SRV/UtenteSet?$format=json", 
+                method: "GET",
+                success: function(data) {
+                    
+                    var Email = [];
+                    var uniqueEmailValues = {};
+
+                    var Password = [];
+                    var uniquePasswordValues = {};
+                    
+                    var Ruolo = [];
+                    var uniqueRuoliValues = {};
+
+
+                    
+                    data.d.results.forEach(function(entity) {
+                    
+                        var emailValue = entity.Mail;
+                        var passwordValue = entity.Password;
+                        var utenteValue = entity.Ruolo;
+
+                        if (!uniqueEmailValues[emailValue]) {
+                            uniqueEmailValues[emailValue] = true; 
+                            Email.push(emailValue);
+                        }
+
+                        if (!uniquePasswordValues[passwordValue]) {
+                            uniquePasswordValues[passwordValue] = true; 
+                            Password.push(passwordValue);
+                        }
+
+                        if (!uniqueRuoliValues[utenteValue]) {
+                            uniqueRuoliValues[utenteValue] = true; 
+                            Ruolo.push(utenteValue);
+                        }
+
+                    });
+
+                    var RuoliData = {
+                        "Email": Email,
+                        "Password": Password,
+                        "Ruolo": Ruolo
+                    };
+
+                    oModel.setData(RuoliData); 
+                    console.log(RuoliData);
+                },
+                error: function(error) {
+                    console.error("Errore durante il recupero dei dati dal backend:", error);
+                }
+            });
+
+            return oModel;
+        },
+        createLoginModel: function() {
+			return new JSONModel({
+				Email: "",
+				Password: "",
+                Ruolo: ""
+			});
+		},
+        createRegModel: function() {
+			return new JSONModel({
+				Mail: "",
+				Password: "",
+                Ruolo: ""
+			});
+		},
+        createPassModel: function() {
+			var oModel = new JSONModel({ 
+                Password: "", 
+            });
+			return oModel;
+		},
     };
 });

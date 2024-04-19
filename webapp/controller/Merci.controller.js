@@ -7,13 +7,14 @@ sap.ui.define([
     "sap/ui/core/routing/History",
     "sap/m/Button",
 	"sap/m/library",
-    "sap/m/Text"
+    "sap/m/Text",
+    '../Formatter'
     
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller,Filter,FilterOperator,Dialog,MessageToast,History,Button,mobileLibrary,Text) {
+    function (Controller,Filter,FilterOperator,Dialog,MessageToast,History,Button,mobileLibrary,Text,Formatter) {
         "use strict";
 
         
@@ -102,7 +103,7 @@ sap.ui.define([
 
             onCloseNewInvoiceDialog: function() {
                 this.getView().byId("NewInvoice").close();
-            },
+            },                 
             onDelete: function(){
 	
                 var that = this;
@@ -157,7 +158,7 @@ sap.ui.define([
                 this.getView().byId("edit").close();
             },
             onIdMerciChange: function(oEvent) {
-                var oDataModel = this.getView().getModel("GeneralModel");
+                var oDataModel = this.getView().getModel("RoleModel");
                 var sSelectedId = oEvent.getSource().getSelectedKey();
 
                 // Recupera l'array di dati
