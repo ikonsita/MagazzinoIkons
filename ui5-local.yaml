@@ -31,7 +31,7 @@ server:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
           - path: /sap
-            url: http://virtualhost:500
+            url: http://virtualhost:50001
             client: '001'
             destination: sap_onpremise
     - name: sap-fe-mockserver

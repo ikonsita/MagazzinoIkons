@@ -17,7 +17,7 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: http://virtualhost:500
+            url: http://virtualhost:50001
             client: '001'
             destination: sap_onpremise
     - name: fiori-tools-appreload
