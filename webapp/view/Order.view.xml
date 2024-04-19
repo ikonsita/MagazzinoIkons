@@ -1,0 +1,78 @@
+<mvc:View controllerName="com.sap.magazzinoikons.controller.Order"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+
+   <Page
+		showNavButton="true"
+		navButtonPress=".onToPage1">
+
+    <ObjectHeader
+		title="Dettagli Ordine"
+
+		number="{
+			parts:[{path:'OrderModel>IdOrdine'}],
+			type: 'sap.ui.model.type.Currency',
+			formatOptions: {showMeasure: false}
+		}"
+		numberUnit="EUR"
+		
+		icon="sap-icon://shipping-status"
+		>
+        <ObjectAttribute text="ID Ordine: {OrderModel>IdOrdine}" />
+		<ObjectAttribute text="Numero Ordine: {OrderModel>NumeroOrdine}" />
+		<ObjectAttribute text="Categoria: {OrderModel>Categoria}" />
+		<ObjectAttribute text="Data Ordine: {
+				        path: 'OrderModel>DataOrdine',
+				        type: 'sap.ui.model.type.Date'
+				        }" />
+        <ObjectAttribute text="Indirizzo Partenza: {OrderModel>IndirizzoPartenza}" />
+        <ObjectAttribute text="Indirizzo Consegna: {OrderModel>IndirizzoConsegna}" />
+        <ObjectAttribute text="Stato: {OrderModel>Stato}" />
+        <ObjectAttribute text="Dettaglio Ordine: {OrderModel>DettaglioOrdine}" />
+        <ObjectAttribute text="Prezzo Totale: {OrderModel>PrezzoTotale}" />
+		
+	</ObjectHeader>
+
+        <List
+        items="{GeneralOrderModel>/Dati}"
+        headerText="Products"
+        id="List4"
+        class="sapUiTinyMargin"
+        growing="true"
+        growingThreshold="10"
+        >
+                    <headerToolbar>
+         <Toolbar>
+            <Title text="{i18n>PRODOTTI}"/>
+			<Button icon="sap-icon://synchronize" press=".onRefresh" />
+            <ToolbarSpacer/>
+            <SearchField
+               width="50%"
+               search=".onFilterInvoices"/>
+         </Toolbar>
+      </headerToolbar>
+        <ObjectListItem
+            title="{GeneralOrderModel>DescMag}"
+            number="{
+                parts:[{path:'GeneralOrderModel>PrezzoldMercMag'}],
+                type: 'sap.ui.model.type.Currency',
+                formatOptions: {showMeasure: false}
+            }"
+            numberUnit="EURO">
+            <firstStatus>
+                <ObjectStatus
+                    text="{GeneralOrderModel>DispMercMag}"
+                    state="{
+                        path: 'Status',
+                        formatter: 'com.sap.marketplaceproject.Formatter.status'
+                    }" />
+            </firstStatus>
+            <ObjectAttribute text="Quantita disponibile: {GeneralOrderModel>QuantdispMercMag}" />
+            <ObjectAttribute text="Descrizione: {GeneralOrderModel>NoteMercMag}" />
+        </ObjectListItem>
+    </List>
+
+	</Page>
+
+
+</mvc:View>

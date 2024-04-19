@@ -94,10 +94,24 @@
       },
       "routes": [
         {
-          "name": "Home",
+          "name": "Login",
           "pattern": ":?query:",
           "target": [
+            "Login"
+          ]
+        },
+        {
+          "name": "Home",
+          "pattern": "Home",
+          "target": [
             "Home"
+          ]
+        },
+        {
+          "name": "HomeUser",
+          "pattern": "HomeUser",
+          "target": [
+            "HomeUser"
           ]
         },
         {
@@ -127,15 +141,65 @@
           "target": [
             "MagObject"
           ]
+        },
+        {
+          "name": "Prodotti",
+          "pattern": "Prodotti",
+          "target": [
+            "Prodotti"
+          ]
+        },
+        {
+          "name": "Profilo",
+          "pattern": "Profilo",
+          "target": [
+            "Profilo"
+          ]
+        },
+        {
+          "name": "Product",
+          "pattern": "Product/{MerciPath}",
+          "target": [
+            "Product"
+          ]
+        },
+        {
+          "name": "Cart",
+          "pattern": "Cart",
+          "target": [
+            "Cart"
+          ]
+        },
+
+        {
+          "name": "Order",
+          "pattern": "Order/{OrderPath}",
+          "target": [
+            "Order"
+          ]
         }
       ],
       "targets": {
+        "Login": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Login",
+          "viewName": "Login"
+        },
         "Home": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
           "viewId": "Home",
           "viewName": "Home"
+        },
+        "HomeUser": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "HomeUser",
+          "viewName": "HomeUser"
         },
         "Merci": {
           "viewType": "XML",
@@ -162,6 +226,36 @@
           "transition": "slide",
           "clearControlAggregation": false,
           "viewName": "MagObject"
+        },
+        "Prodotti": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "View1"
+        },
+        "Profilo": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "ProfileView"
+        },
+        "Product": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Product"
+        },
+        "Cart": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Cart"
+        },
+        "Order": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewName": "Order"
         }
       }
     },

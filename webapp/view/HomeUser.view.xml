@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.sap.magazzinoikons.controller.Home"
+<mvc:View controllerName="com.sap.magazzinoikons.controller.HomeUser"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:f="sap.f"
@@ -16,10 +16,7 @@
                 <content>
                     <Panel id="Gestionale">
                         <FlexBox height="78vh" alignItems="Center" justifyContent="Center">
-                            <GenericTile header="Gestione Merci" class="sapUiMediumMarginBeginEnd" press=".onMerci">
-                                <TileContent footer="Click me"/>
-                            </GenericTile>
-                            <GenericTile header="Gestione Magazzino" press=".onMagazzino">
+                            <GenericTile header="Gestione Ordini" press=".onOrdini">
                                 <TileContent footer="Click me" />
                             </GenericTile>
                         </FlexBox>

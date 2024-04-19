@@ -290,5 +290,34 @@ sap.ui.define([
             });
 			return oModel;
 		},
+        createProdottiModel: function() {
+			var oModel = new JSONModel({"Dati": []});
+			return oModel;
+		},
+        createCartModel: function() {
+			var oModel = new JSONModel({"IdMerci": [],  "PrezzoTotale": ''});
+			return oModel;
+		},
+        createCartGeneralModel: function() {
+			var oModel = new JSONModel({"Dati": []});
+			return oModel;
+		},
+        createNewOrderModel: function() {
+			var oModel = new JSONModel({"NumeroOrdine": '00001', "Categoria": '', "IndirizzoConsegna": '', "DettaglioOrdine":'', "DataOrdine": new Date(),"IndirizzoPartenza": 'Magazzini Ikons',"Stato": 'SPEDIZIONE', "PrezzoTotale": '', "IdFornitore": '1',"IdCliente": '1'});
+			return oModel;
+		},
+        createOrderModel: function() {
+			var oModel = new JSONModel({"Dati": []});
+			return oModel;
+		},
+
+        createOrderFilterModel: function() {
+			var oModel = new JSONModel({"IdOrdine": ''});
+			return oModel;
+		},
+        createGeneralOrderModel: function() {
+			var oModel = new JSONModel({"Dati": []});
+			return oModel;
+		}
     };
 });

@@ -1,0 +1,37 @@
+<mvc:View controllerName="com.sap.magazzinoikons.controller.Profile"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+	xmlns:tnt="sap.tnt">
+	
+	<Page
+		showNavButton="true"
+		navButtonPress=".onToPage1">
+		<tnt:ToolHeader id="toolheader1" class="sapUiTinyMargin">
+			<Title text="Nome Cognome" wrapping="false">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="Disappear"/>
+				</layoutData>
+			</Title>
+			<ToolbarSpacer />
+			<OverflowToolbarButton icon="sap-icon://cart" type="Transparent" tooltip="Action 1" text="Action 1" press="onCart"/>
+			<Avatar src="test-resources/sap/tnt/images/Woman_avatar_01.png" displaySize="XS" press="onToPage2" tooltip="Profile">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="NeverOverflow"/>
+				</layoutData>
+			</Avatar>
+		</tnt:ToolHeader>
+		
+		<List headerText="Ordini Effettuati"  items="{OrderModel>/Dati}" >
+		<CustomListItem type="Navigation" press="onPress">
+			<HBox>
+				<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+					<Link text="{OrderModel>NumeroOrdine}" press=""/>
+					<Label text="{OrderModel>IdOrdine}"/>
+				</VBox>
+			</HBox>
+		</CustomListItem>
+	</List>	
+	
+	</Page>
+	
+</mvc:View>

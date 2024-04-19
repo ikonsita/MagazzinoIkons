@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
+    xmlns:u="sap.ui.unified">
+    <Dialog id="NewOrder" title="Nuovo Ordine" >
+        
+        <Label class="sapUiTinyMargin" text="Categoria del'ordine"/>
+        <Input required="true" value="{NewOrderModel>/Categoria}"/>
+        <Label class="sapUiTinyMargin" text="Indirizzo di consegna"/>
+        <Input required="true" value="{NewOrderModel>/IndirizzoConsegna}"/>
+        <Label class="sapUiTinyMargin" text="dettaglio ordine"/>
+        <Input required="true" value="{NewOrderModel>/DettaglioOrdine}"/>
+        <Button class="sapUiTinyMargin" text="Annulla" type="Back" press="onCloseNewInvoiceDialog"/>
+        <Button class="sapUiTinyMargin" text="Conferma" type="Accept" press="onSaveNewInvoice"/>
+        
+      </Dialog>
+</core:FragmentDefinition>

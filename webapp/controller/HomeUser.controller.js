@@ -12,11 +12,8 @@ sap.ui.define([
             onInit: function() {
                 
             },
-            onMerci : function () {
-                this.getOwnerComponent().getRouter().navTo("Merci");
-            },
-            onMagazzino : function () {
-                this.getOwnerComponent().getRouter().navTo("Magazzino");
+            onOrdini : function () {
+                this.getOwnerComponent().getRouter().navTo("Prodotti");
             }
         });
     });

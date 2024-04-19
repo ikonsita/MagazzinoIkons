@@ -1,0 +1,66 @@
+<mvc:View controllerName="com.sap.magazzinoikons.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+	xmlns:tnt="sap.tnt">
+	<ScrollContainer vertical="true" horizontal="false" height="100%">
+		<tnt:ToolHeader id="toolheader1" class="sapUiTinyMargin">
+			<Title text="IKONSITALIA MARKETPLACE" wrapping="false">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="Disappear"/>
+				</layoutData>
+			</Title>
+			<ToolbarSpacer />
+			<OverflowToolbarButton icon="sap-icon://cart" type="Transparent" tooltip="Action 1" text="Action 1" press="onCart"/>
+			<Avatar src="test-resources/sap/tnt/images/Woman_avatar_01.png" displaySize="XS" press="onToPage2" tooltip="Profile">
+				<layoutData>
+					<OverflowToolbarLayoutData priority="NeverOverflow"/>
+				</layoutData>
+			</Avatar>
+		</tnt:ToolHeader>
+
+
+
+
+<List
+		items="{ProdottiModel>/Dati}"
+		headerText="Products"
+		id="List1"
+		class="sapUiTinyMargin"
+		growing="true"
+		growingThreshold="10"
+		>
+					<headerToolbar>
+         <Toolbar>
+            <Title text="{i18n>PRODOTTI}"/>
+            <ToolbarSpacer/>
+            <SearchField 
+               width="50%" 
+               search=".onFilterInvoices"/>
+         </Toolbar>
+      </headerToolbar>
+		<ObjectListItem
+			title="{ProdottiModel>DescMag}"
+			type="Navigation"
+			               
+                press=".onPress" 
+			number="{
+			parts: [{path: 'ProdottiModel>PrezzoldMercMag'}],
+			formatter: 'com.sap.magazzinoikons.Formatter',
+			type: 'sap.ui.model.type.Currency',
+			formatOptions: {showMeasure: false}
+			}"
+			numberUnit="EURO">
+			<firstStatus>
+				<ObjectStatus
+					text="{ProdottiModel>DispMercMag}"
+					state="{
+						path: 'Status',
+						formatter: 'com.sap.magazzinoikons.Formatter.status'
+					}" />
+			</firstStatus>
+			<ObjectAttribute text="Quantita disponibile: {ProdottiModel>QuantdispMercMag}" />
+			<ObjectAttribute text="Descrizione: {ProdottiModel>NoteMercMag}" />
+		</ObjectListItem>
+	</List>
+		</ScrollContainer>
+</mvc:View>

@@ -3,22 +3,27 @@
     background-size: contain;
 }
 
+#application-comsapmagazzinoikons-display-component---HomeUser--Gestionale-content{
+    background-image: url("../public/magazzinoIkons.jpeg");
+    background-size: contain;
+}
+
 #application-comsapmagazzinoikons-display-component---Login--inputEmail-inner  {
-    width: 600px;
+    width: 300px;
 }
 
 #application-comsapmagazzinoikons-display-component---Login--inputPassword-inner{
-    width: 600px;
+    width: 300px;
 }
 
-#__vbox0{
-    height: 70vh;
+#__form0--FC-NoHead--Grid{
+    height: 74vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #application-comsapmagazzinoikons-display-component---Login--Ruolo-inner{
-    width: 600px;
+    width: 300px;
 }
 

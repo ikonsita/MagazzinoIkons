@@ -1,0 +1,48 @@
+<mvc:View controllerName="com.sap.magazzinoikons.controller.Login"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:core="sap.ui.core"
+    xmlns:fo="sap.ui.layout.form"
+    >
+
+    <App>
+        <pages>
+            <Page>
+                <Toolbar>
+                    <Title text="Login"/>
+			    </Toolbar>
+                <content>
+                    <Panel id="Login">
+                        <fo:SimpleForm editable="true" layout="ResponsiveGridLayout">
+                            <fo:content>
+                                <VBox>
+                                    <Label for="Email" text="Email"/>
+                                    <Input id="inputEmail" type="Email" placeholder="Inserisci email" value="{LoginModel>/Mail}" required="true"/>
+                             
+                                    <Label for="Password" text="Password"/>
+                                    <Input id="inputPassword" value="{LoginModel>/Password}" placeholder="Inserisci password" required="true"/>
+
+                                    <Label for="Ruolo" text="Ruolo"/>
+                                    <ComboBox selectedKey="{LoginModel>/Ruolo}" placeholder="Seleziona il tuo ruolo" id="Ruolo" required="true" items="{ path: 'RoleModel>/Ruolo' }">
+                                        <items>
+                                            <core:Item key="{RoleModel>}" text="{RoleModel>}"/>
+                                        </items>
+                                    </ComboBox>
+                                </VBox>
+                            </fo:content>
+                        </fo:SimpleForm>
+                    </Panel>
+                </content>
+                <footer>
+                    <OverflowToolbar class="noBorderBottom">
+                        <ToolbarSpacer/>
+                        <Button text="{i18n>Login}" icon="sap-icon://visits" type="Emphasized" press="onLogin"/>
+                    <Button text="{i18n>Registrati}" press="onNewReg" type="Emphasized" icon="sap-icon://add-employee"/>
+                    </OverflowToolbar>
+                </footer>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>

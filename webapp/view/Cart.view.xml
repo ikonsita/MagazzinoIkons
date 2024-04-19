@@ -1,0 +1,46 @@
+<mvc:View controllerName="com.sap.magazzinoikons.controller.Cart"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+<Page 
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+
+    <List
+		items="{CartGeneralModel>/Dati}"
+		id="List2"
+		class="sapUiTinyMargin"
+		mode="Delete"
+		delete="onDelete"
+		growing="true"
+		growingThreshold="10"
+		>
+		
+					<headerToolbar>
+         <Toolbar>
+            <Title text="{i18n>Carrello}"/>
+			<Button icon="sap-icon://synchronize" press=".onRefresh" />
+            <ToolbarSpacer/>
+         </Toolbar>
+      </headerToolbar>
+		<ObjectListItem
+			title="{CartGeneralModel>DescMag}"
+			number="{
+				parts:[{path:'CartGeneralModel>PrezzoldMercMag'}],
+				type: 'sap.ui.model.type.Currency',
+				formatOptions: {showMeasure: false}
+			}"
+			numberUnit="EURO">
+		</ObjectListItem>
+	</List>
+	<footer>
+            <Bar>
+                <contentRight>
+                    <!-- Add buttons or other controls here -->
+					<Text text="PREZZO TOTALE: {path: 'CartModel>/PrezzoTotale', formatter: 'com.sap.marketplaceproject.formatter.onInit'} EUR" />
+                    <Button text="Acquista" type="Accept" press="onNewInvoice"/>
+                </contentRight>
+            </Bar>
+        </footer>
+	</Page>
+
+    </mvc:View>

@@ -45,7 +45,16 @@ sap.ui.define([
                 this.setModel(models.createLoginModel(), "LoginModel");
                 this.setModel(models.createRoleModel(), "RoleModel");      
                 this.setModel(models.createRegModel(), "RegModel");           
-                this.setModel(models.createPassModel(), "PassModel");           
+                this.setModel(models.createPassModel(), "PassModel");      
+                
+                
+                this.setModel(models.createProdottiModel(), "ProdottiModel");
+                this.setModel(models.createCartModel(), "CartModel");
+                this.setModel(models.createCartGeneralModel(), "CartGeneralModel");
+                this.setModel(models.createNewOrderModel(), "NewOrderModel");
+                this.setModel(models.createOrderModel(), "OrderModel");
+                this.setModel(models.createOrderFilterModel(), "OrderFilterModel");
+                this.setModel(models.createGeneralOrderModel(), "GeneralOrderModel");
             }
         });
     }

@@ -1,0 +1,43 @@
+<mvc:View controllerName="com.sap.magazzinoikons.controller.Product"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+	<Page
+		showNavButton="true"
+		navButtonPress=".onNavBack">
+		
+	<ObjectHeader
+		title="{ProdottiModel>DescMag}"
+
+		number="{path: 'ProdottiModel>PrezzoldMercMag', formatter: '..formatter'}"
+		numberUnit="EUR"
+		icon="sap-icon://product"
+		>
+
+					<statuses>
+				<ObjectStatus
+					text="{ProdottiModel>DispMercMag}"
+					state="{
+						path: 'Status',
+						formatter: 'com.sap.marketplaceproject.Formatter.status'
+					}" />
+			</statuses>
+        <ObjectAttribute text="ID Prodotto: {ProdottiModel>IdMerci}" />
+		<ObjectAttribute text="Quantità in magazzino: {ProdottiModel>QuantdispMercMag}" />
+		<ObjectAttribute text="Categoria: {ProdottiModel>CategMercMag}" />
+		<ObjectAttribute text="Peso: {ProdottiModel>PesoMercMag}" />
+        <ObjectAttribute text="Dimensione: {ProdottiModel>DimMercMag}" />
+        <ObjectAttribute text="Descrizione: {ProdottiModel>NoteMercMag}" />
+		
+	</ObjectHeader>
+					<Button
+					id="BadgedButton"
+					class="sapUiMediumMargin"
+					icon="sap-icon://cart-3"
+					press="onAddToCart"
+					text="Aggiungi al carello">
+
+				</Button>
+	<Image src="{ProdottiModel>Image}" class="sapUiMediumMarginBeginEnd" width="{/imageWidth}" />
+    </Page>
+
+</mvc:View>
