@@ -2,7 +2,7 @@
 
 specVersion: "3.1"
 metadata:
-  name: com.sap.magazzinoikons
+  name: com.sap.marketplaceproject
 type: application
 framework:
   name: SAPUI5
@@ -31,9 +31,9 @@ server:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
         backend:
           - path: /sap
-            url: http://virtualhost:500
+            url: http://vhcala4hcivir:50000
             client: '001'
-            destination: sap_onpremise
+            destination: MyFirstConnection
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
@@ -47,5 +47,5 @@ server:
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:
-        component: com.sap.magazzinoikons
+        component: com.sap.marketplaceproject
         ui5Theme: sap_horizon

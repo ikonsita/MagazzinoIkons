@@ -13,8 +13,8 @@
 				</layoutData>
 			</Title>
 			<ToolbarSpacer />
-			<OverflowToolbarButton icon="sap-icon://cart" type="Transparent" tooltip="Action 1" text="Action 1" press="onCart"/>
-			<Avatar src="test-resources/sap/tnt/images/Woman_avatar_01.png" displaySize="XS" press="onToPage2" tooltip="Profile">
+			
+			<Avatar src="test-resources/sap/tnt/images/Woman_avatar_01.png" displaySize="S"  tooltip="Profile">
 				<layoutData>
 					<OverflowToolbarLayoutData priority="NeverOverflow"/>
 				</layoutData>
